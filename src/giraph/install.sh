@@ -21,8 +21,9 @@ then
 fi
 
 
-# Path variables for paths of confs and GIRAPH_HOME
+# Path variables for paths of confs and GIRAPH_HOME and HADOOP_HOME
 GIRAPH_HOME=$_INST_HOME/$INSTALL_DIR/giraph
+GIRAPH_HOME=$_INST_HOME/$INSTALL_DIR/hadoop
 GRAPH_PLAT_HOME=$_INST_HOME/$INSTALL_DIR/graphalytics-platforms-giraph
 GIRAPH_CONF=$_INST_HOME/$INSTALL_DIR/graphalytics-platforms-giraph/$CONF_DIR/giraph.properties
 
@@ -41,12 +42,16 @@ then
 	git clone https://github.com/atlarge-research/graphalytics-platforms-giraph.git $GRAPH_PLAT_HOME
 	
     # Get Giraph and unpack it
-    wget http://apache.xl-mirror.nl/giraph/giraph-1.2.0/giraph-dist-1.2.0-bin.tar.gz -P $GIRAPH_HOME
-    tar -xvzf $GIRAPH_HOME/giraph-dist-1.2.0-bin.tar.gz -C $GIRAPH_HOME
-    rm -f $GIRAPH_HOME/giraph-dist-1.2.0-bin.tar.gz
+    wget http://apache.xl-mirror.nl/giraph/giraph-1.2.0/giraph-dist-1.2.0-bin.tar.gz -P $_INST_HOME
+    tar -xvzf $_INST_HOME/giraph-dist-1.2.0-bin.tar.gz -C $_INST_HOME
+    rm -f $_INST_HOME/giraph-dist-1.2.0-bin.tar.gz
+    find $_INST_HOME -maxdepth 1 -name "giraph-*-for-hadoop-*" | xargs -I '{}' mv '{}' $GIRAPH_HOME
 
-	# Rename config-template folder to config
-	#mv $GRAPH_PLAT_HOME/config-template $GRAPH_PLAT_HOME/$CONF_DIR
+    # Get Hadoop and unpack it
+    wget http://archive.apache.org/dist/hadoop/core/hadoop-0.20.203.0/hadoop-0.20.203.0rc1.tar.gz $_INST_HOME
+    tar -xvzf hadoop-0.20.203.0rc1.tar.gz -C $_INST_HOME
+    find $_INST_HOME -maxdepth 1 -name "hadoop-*" | xargs -I '{}' mv '{}' $HADOOP_HOME
+
 fi
 
 
