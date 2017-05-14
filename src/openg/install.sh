@@ -8,6 +8,7 @@ CONF_DIR=config-template
 
 # Declare openg intermediate directory.
 OPENG_INT=tmp/openg
+OPENG_OUT=out/openg
 
 # Get the path of this script.
 SCRIPT_PATH=$(dirname "$(readlink -f "$0")")
@@ -51,9 +52,11 @@ fi
 echo Configuring \'$OPENG_CONF\'.
 $SCRIPT_PATH/../util/configure.sh "openg.home" $OPENG_HOME $OPENG_CONF
 $SCRIPT_PATH/../util/configure.sh "openg.intermediate-dir" $_INST_HOME/$OPENG_INT $OPENG_CONF
+$SCRIPT_PATH/../util/configure.sh "openg.output-dir" $_INST_HOME/$OPENG_OUT $OPENG_CONF
 
 # Make the intermediate directory to be sure.
 mkdir -p $_INST_HOME/$OPENG_INT
+mkdir -p $_INST_HOME/$OPENG_CORE
 
 
 

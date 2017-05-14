@@ -20,6 +20,9 @@ then
 else
 	echo Graphalytics core repo has been built already. \[Skipped\]
 fi
+
+# First attempt to remove any packaged repos.
+find $SCRIPT_DIR/ -maxdepth 1 -name "graphalytics-*-openg-*" | xargs rm -rf
  
 # Run mvn package in the platform repository to create a binary
 # of the platform extension and a distributable archive ("Graphalytics distribution").
