@@ -23,7 +23,7 @@ fi
 
 # Path variables for paths of confs and GIRAPH_HOME and HADOOP_HOME
 GIRAPH_HOME=$_INST_HOME/$INSTALL_DIR/giraph
-GIRAPH_HOME=$_INST_HOME/$INSTALL_DIR/hadoop
+HADOOP_HOME=$_INST_HOME/$INSTALL_DIR/hadoop
 GRAPH_PLAT_HOME=$_INST_HOME/$INSTALL_DIR/graphalytics-platforms-giraph
 GIRAPH_CONF=$_INST_HOME/$INSTALL_DIR/graphalytics-platforms-giraph/$CONF_DIR/giraph.properties
 
@@ -38,6 +38,9 @@ then
 	echo Removing $GIRAPH_HOME
 	rm -rf $GIRAPH_HOME
 
+	echo Removing $HADOOP_HOME
+	rm -rf $HADOOP_HOME
+
 	# Clone the necessary repositories and dependencies
 	git clone https://github.com/atlarge-research/graphalytics-platforms-giraph.git $GRAPH_PLAT_HOME
 	
@@ -48,9 +51,10 @@ then
     find $_INST_HOME -maxdepth 1 -name "giraph-*-for-hadoop-*" | xargs -I '{}' mv '{}' $GIRAPH_HOME
 
     # Get Hadoop and unpack it
-    wget http://archive.apache.org/dist/hadoop/core/hadoop-0.20.203.0/hadoop-0.20.203.0rc1.tar.gz $_INST_HOME
+    wget http://archive.apache.org/dist/hadoop/core/hadoop-0.20.203.0/hadoop-0.20.203.0rc1.tar.gz -P $_INST_HOME
     tar -xzf hadoop-0.20.203.0rc1.tar.gz -C $_INST_HOME
-    find $_INST_HOME -maxdepth 1 -name "hadoop-*" | xargs -I '{}' mv '{}' $HADOOP_HOME
+  #  rm -f $_INST_HOME/hadoop-0.20.203.0rc1.tar.gz
+  #  find $_INST_HOME -maxdepth 1 -name "hadoop-*" | xargs -I '{}' mv '{}' $HADOOP_HOME
 
 fi
 
