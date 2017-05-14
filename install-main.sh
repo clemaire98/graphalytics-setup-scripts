@@ -30,7 +30,7 @@ git clone https://github.com/ldbc/ldbc_graphalytics.git
 
 
 # Install all underlying repos with the same options
-openg/install.sh "$@"
+./openg/install-openg.sh "$@"
 
 
 # Clean up temporary variables
