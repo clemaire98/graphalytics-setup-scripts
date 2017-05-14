@@ -21,5 +21,9 @@ then
 fi
 
 
+# Make directory for graphs to go in.
+mkdir -p /var/scratch/clemaire/graphs
+
+
 # Install all underlying repos with the same options
 $_SCRIPT_PATH/openg/install.sh --main

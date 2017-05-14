@@ -4,7 +4,7 @@
 OPENG_INSTALL_DIR=openg-3.2
 
 # Declare the name of the config directory of graphalytics
-CONF_DIR=conf
+CONF_DIR=config-template
 
 # Declare openg intermediate directory.
 OPENG_INT=tmp/openg
@@ -42,7 +42,7 @@ then
 	git clone https://github.com/graphbig/graphBIG.git $OPENG_HOME
 
 	# Rename config-template folder to config
-	mv $GRAPH_PLAT_HOME/config-template $GRAPH_PLAT_HOME/$CONF_DIR
+	#mv $GRAPH_PLAT_HOME/config-template $GRAPH_PLAT_HOME/$CONF_DIR
 fi
 
 

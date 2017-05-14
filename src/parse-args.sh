@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Export the unpack directory, which should be the first parameter.
-_INST_HOME=$HOME
+_INST_HOME=$HOME/graphalytics-0.3
 
 while [ $# -gt 0 ]
 do
