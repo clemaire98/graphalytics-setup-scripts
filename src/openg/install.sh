@@ -7,7 +7,7 @@ OPENG_INSTALL_DIR=openg-3.2
 CONF_DIR=conf
 
 # Declare openg intermediate directory.
-$OPENG_INT=tmp/openg
+OPENG_INT=tmp/openg
 
 # Get the path of this script.
 SCRIPT_PATH=$(dirname "$(readlink -f "$0")")
@@ -48,13 +48,16 @@ fi
 
 
 # Edit the config file of the graphalytics platform driver.
+echo Configuring \'$OPENG_CONF\'.
 $SCRIPT_PATH/../util/configure.sh "openg.home" $OPENG_HOME $OPENG_CONF
 $SCRIPT_PATH/../util/configure.sh "openg.intermediate-dir" $_INST_HOME/$OPENG_INT $OPENG_CONF
 
 # Make the intermediate directory to be sure.
-mkdir $_INST_HOME/$OPENG_INT
+mkdir -p $_INST_HOME/$OPENG_INT
 
 
 
 # Copy build file over to the installation home directory.
+echo Placing \'build.sh\' file in \'$_INST_HOME/$OPENG_INSTALL_DIR/\'
 cp $SCRIPT_PATH/build.sh $_INST_HOME/$OPENG_INSTALL_DIR/build.sh
+chmod +x $_INST_HOME/$OPENG_INSTALL_DIR/build.sh
