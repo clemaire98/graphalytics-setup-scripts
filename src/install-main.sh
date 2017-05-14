@@ -1,15 +1,25 @@
+#!/bin/sh
+
+# Get the path of this script.
+_SCRIPT_PATH=$(dirname "$(readlink -f "$0")")
+
 # Run the install-arguments script.
-./install-arguments.sh parse "$@"
+eval $($_SCRIPT_PATH/install-arguments.sh "$@")
+export _INST_CLEAN
+export _INST_HOME
+
+# Set the graphalytics-core home directory
+GL_CORE_HOME=$_INST_HOME/ldbc-graphalytics
 
 # Clone the graphalytics core repo
 if [ "$_INST_CLEAN" = "1" ]
 then
-	git clone https://github.com/ldbc/ldbc_graphalytics.git $HOME/ldcs-graphalytics
+	# Remove old copy of graphalytics-core.
+	rm -rf $GL_CORE_HOME
+	
+	git clone https://github.com/ldbc/ldbc_graphalytics.git $GL_CORE_HOME
 fi
 
 
 # Install all underlying repos with the same options
-./openg/install-openg.sh
-
-# Run the install-arguments script for cleaning up.
-./install-arguments.sh clean
+$_SCRIPT_PATH/openg/install-openg.sh --main
