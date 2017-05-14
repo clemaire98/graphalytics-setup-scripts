@@ -43,13 +43,13 @@ then
 	
     # Get Giraph and unpack it
     wget http://apache.xl-mirror.nl/giraph/giraph-1.2.0/giraph-dist-1.2.0-bin.tar.gz -P $_INST_HOME
-    tar -xvzf $_INST_HOME/giraph-dist-1.2.0-bin.tar.gz -C $_INST_HOME
+    tar -xzf $_INST_HOME/giraph-dist-1.2.0-bin.tar.gz -C $_INST_HOME
     rm -f $_INST_HOME/giraph-dist-1.2.0-bin.tar.gz
     find $_INST_HOME -maxdepth 1 -name "giraph-*-for-hadoop-*" | xargs -I '{}' mv '{}' $GIRAPH_HOME
 
     # Get Hadoop and unpack it
     wget http://archive.apache.org/dist/hadoop/core/hadoop-0.20.203.0/hadoop-0.20.203.0rc1.tar.gz $_INST_HOME
-    tar -xvzf hadoop-0.20.203.0rc1.tar.gz -C $_INST_HOME
+    tar -xzf hadoop-0.20.203.0rc1.tar.gz -C $_INST_HOME
     find $_INST_HOME -maxdepth 1 -name "hadoop-*" | xargs -I '{}' mv '{}' $HADOOP_HOME
 
 fi
