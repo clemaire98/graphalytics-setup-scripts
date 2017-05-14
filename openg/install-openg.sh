@@ -5,7 +5,7 @@ CONF_DIR=conf
 OPENG_HOME=$PWD/graphBIG/
 OPENG_CONF=$PWD/graphalytics-platforms-openg/$CONF_DIR/openg.properties
 
-if [ "$1" == "-c" ]
+if [ "$_INST_CLEAN" -eq "1" ]
 then
 	# Delete the current packages to be sure of a clean install
 	echo Removing ./graphalytics-platforms-openg/
