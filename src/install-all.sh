@@ -4,7 +4,7 @@
 _SCRIPT_PATH=$(dirname "$(readlink -f "$0")")
 
 # Run the install-arguments script.
-eval $($_SCRIPT_PATH/install-arguments.sh "$@")
+eval $($_SCRIPT_PATH/parse-args.sh "$@")
 export _INST_CLEAN
 export _INST_HOME
 
@@ -22,4 +22,4 @@ fi
 
 
 # Install all underlying repos with the same options
-$_SCRIPT_PATH/openg/install-openg.sh --main
+$_SCRIPT_PATH/openg/install.sh --main
