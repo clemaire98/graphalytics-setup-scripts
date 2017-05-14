@@ -17,7 +17,7 @@ do
 				_INST_HOME="$1"
 			fi
 			;;
-		"-c"|"--clean")
+		-c|--clean)
 			_INST_CLEAN=1
 			;;
 	esac
