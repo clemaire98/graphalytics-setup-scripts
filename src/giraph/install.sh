@@ -42,7 +42,7 @@ then
 	
     # Get Giraph and unpack it
     wget http://apache.xl-mirror.nl/giraph/giraph-1.2.0/giraph-dist-1.2.0-bin.tar.gz -P $GIRAPH_HOME
-    tar -xvzf $GIRAPH_HOME/giraph-dist-1.2.0-bin.tar.gz
+    tar -xvzf $GIRAPH_HOME/giraph-dist-1.2.0-bin.tar.gz -C $GIRAPH_HOME
     rm -f $GIRAPH_HOME/giraph-dist-1.2.0-bin.tar.gz
 
 	# Rename config-template folder to config
